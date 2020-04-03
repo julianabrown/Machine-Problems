@@ -163,27 +163,6 @@ int main(int argv, int* argc) {
 	}
 	printf(" Kernel execution time for addition by collumn: %.2fms.\n", avems / 10.0);
 
-	MatrixAddition(h_matC, h_matA, h_matB, size);
-
-	//Check for correctness
-	bool success = true;
-	for (int i = 0; i< size && success; i++) {
-		for (int j = 0; j < size && success; j++) {
-			if (abs(d_C[i*16 + j] - d_C[i*16 + j]) > 0.001)
-			{
-				success = false;
-				printf("NOT EQUAL\n");
-			}
-		}
-	}
-	if (success)
-	{
-		printf("Test Passed!");
-	}
-	else
-	{
-		printf("Test Not Passed!");
-	}
 
 	cudaFree(d_A);
 	cudaFree(d_B);
