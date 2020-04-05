@@ -163,7 +163,12 @@ int main(void)
 
 	printf("GPU time= %f ms\n", et);
 	printf("CPU time= %lf ms\n", time_spent);
-
+	
+	cudaDeviceProp dp;
+	printf("  Total amount of shared memory per block: %zu bytes\n",
+		dp.sharedMemPerBlock);
+	
+	
 
 	//check for equal answers
 	bool success = true;
